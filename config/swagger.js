@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://your-project-name.onrender.com", // 🔁 Replace this with your Render URL
+        url: "https://projectw03-w04.onrender.com/api-docs/", // 🔁 Replace this with your Render URL
       },
       {
         url: "http://localhost:3030",
