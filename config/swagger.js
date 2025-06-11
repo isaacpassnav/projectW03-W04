@@ -1,5 +1,6 @@
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+const ensureAuth = require("../middleware/authMiddleware");
 
 const options = {
   definition: {
@@ -19,7 +20,6 @@ const options = {
     ],
     components: {
       schemas: {
-        // 📦 Product schema actualizado
         Product: {
           type: "object",
           required: ["name", "price", "category", "stock"],
@@ -56,8 +56,6 @@ const options = {
             },
           },
         },
-
-        // 📑 Order schema actualizado
         Order: {
           type: "object",
           required: ["customerName", "email", "products", "totalAmount"],
@@ -122,5 +120,4 @@ const swaggerSpec = swaggerJSDoc(options);
 function setupSwaggerDocs(app) {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
-
 module.exports = setupSwaggerDocs;

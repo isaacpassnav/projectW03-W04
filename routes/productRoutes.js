@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
+const ensureAuth = require("../middleware/authMiddleware");
 
 /**
  * @swagger
@@ -68,7 +69,7 @@ router.get("/:id", productController.getProductById);
  *       201:
  *         description: Product created successfully
  */
-router.post("/", productController.createProduct);
+router.post("/", ensureAuth, productController.createProduct);
 
 /**
  * @swagger
@@ -95,7 +96,7 @@ router.post("/", productController.createProduct);
  *       404:
  *         description: Product not found
  */
-router.put("/:id", productController.updateProduct);
+router.put("/:id", ensureAuth, productController.updateProduct);
 
 /**
  * @swagger
@@ -116,7 +117,7 @@ router.put("/:id", productController.updateProduct);
  *       404:
  *         description: Product not found
  */
-router.delete("/:id", productController.deleteProduct);
+router.delete("/:id", ensureAuth, productController.deleteProduct);
 
 module.exports = router;
 
