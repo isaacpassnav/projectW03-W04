@@ -29,8 +29,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/auth", authRoutes)
-app.use("api-docs/products", ensureAuth, productRoutes);
-app.use("api-docs/orders", ensureAuth, orderRoutes)
+app.use("/api/products", ensureAuth, productRoutes);
+app.use("/api/orders", ensureAuth, orderRoutes)
 
 setupSwaggerDocs(app);
 app.listen(PORT, () => {
